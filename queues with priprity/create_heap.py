@@ -1,15 +1,7 @@
-def left_child(i):
-    return 2 * i + 1
-
-
-def right_child(i):
-    return 2 * i + 2
-
-
 def heapify(h, i):
     min_index = i
-    l = left_child(i)
-    r = right_child(i)
+    l = 2 * i + 1
+    r = 2 * i + 2
     per_indexes = []
 
     if l < len(h) and h[l] < h[min_index]:
@@ -30,14 +22,13 @@ num = int(input())
 tree = [int(el) for el in input().split()]
 
 a = []
-for index in reversed(range(len(tree))):
+for index in reversed(range(len(tree) // 2)):
     result = heapify(tree, index)
     for el in result:
         if len(el) > 0:
             a.append(el)
 
 print(len(a))
-
 for el in a:
     print(*el)
 
